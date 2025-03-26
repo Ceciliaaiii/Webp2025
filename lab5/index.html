@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聖誕樹</title>
+    <!-- CSS 內嵌 -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .tree-container {
+            text-align: center;
+            font-size: 20px;
+            color: green;
+            line-height: 1.2;
+            white-space: pre-line;
+        }
+    </style>
+</head>
+<body>
+    <div class="tree-container"></div>
+
+    <!-- JavaScript 內嵌 -->
+    <script>
+        function repeatchar(count, char) {
+            return char.repeat(count);
+        }
+
+        function generateTree(n) {
+            let tree = '';
+            for (let i = 0; i < n; i++) {
+                let spaces = repeatchar(n - i - 1, ' ');
+                let stars = repeatchar(2 * i + 1, '*');
+                tree += spaces + stars + '\n';
+            }
+            let trunkSpaces = repeatchar(n - 1, ' ');
+            tree += trunkSpaces + '*\n'; // 樹幹
+            return tree;
+        }
+
+        // 顯示樹在網頁上
+        const treeContainer = document.querySelector('.tree-container');
+        treeContainer.textContent = generateTree(10); // 樹的高度可以調整
+    </script>
+</body>
+</html>
